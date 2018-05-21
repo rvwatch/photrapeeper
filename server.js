@@ -7,7 +7,7 @@ const database = require('knex')(configuration);
 const bodyParser = require('body-parser');
 
 
-app.set('port', 3000);
+app.set('port', process.env.PORT || 3000);
 
 app.use(express.static('public'))
 app.use(bodyParser.json());
