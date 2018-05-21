@@ -9,6 +9,7 @@ body {
 header {
   text-align: center;
   padding: 20px;
+  background-color: #ddddff;
 }
 
 .logo {
@@ -24,6 +25,15 @@ header {
 #photrapeeper-form label{
   display: block;
   margin: 10px 0;
+}
+
+#photrapeeper-form input {
+  font-size: 18px;
+}
+
+#add-photo-btn {
+  font-size: 18px;
+  cursor: pointer;
 }
 
 .album-wrap {

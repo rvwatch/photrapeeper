@@ -1,9 +1,17 @@
 $( document ).ready( async function () {
   const photoList = await getPhotos();
   renderPhotoCards(photoList);
-
+  const photoForm = $('#photrapeeper-form')[0];
   const deleteButtons = $('.delete-photo'); 
 
+  $(photoForm).on('submit', (event) => {
+    event.preventDefault();
+    const title = $('#title-input').val();
+    const url = $('#url-input').val();
+    addPhoto(title, url);
+    $(photoForm)[0].reset();
+  })
+  
   $('.delete-photo').on('click', (event) => {
     const id = event.target.value;
     deletePhoto(id);
@@ -24,7 +32,6 @@ const getPhotos = async () => {
 const renderPhotoCards = (photoList) => {
   photoList.forEach(photo => {
     const {title, url, id} = photo
-
     const cardHtml = `
       <article class="photo-card" id=${id}>
         <div class="photo-frame">
@@ -33,21 +40,9 @@ const renderPhotoCards = (photoList) => {
         <h2 class="photo-title">${title}</h2>
         <button class="delete-photo" value="${id}">x</button>
       </article>`;
-
       $(".album-wrap").append(cardHtml)
   })
 }
-
-const photoForm = $('#photrapeeper-form')[0];
-
-$(photoForm).on('submit', (event) => {
-  event.preventDefault();
-  const title = $('#title-input').val();
-  const url = $('#url-input').val();
-  addPhoto(title, url);
-  $(photoForm)[0].reset();
-})
-
 
 const addPhoto = async (title, url) => {
   try {
