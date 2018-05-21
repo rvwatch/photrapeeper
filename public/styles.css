@@ -55,6 +55,11 @@ header {
   background-color: blanchedalmond;
 }
 
+.photo-frame img {
+  max-width: 235px;
+    max-height: 235px;
+}
+
 .delete-photo {
   position: absolute;
   bottom: 0;
