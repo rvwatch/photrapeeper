@@ -59,3 +59,4 @@ app.listen(app.get('port'), () => {
   console.log(`Photrapeeper is listening on ${app.get('port')}!!`);
 });
 
+module.exports = {database, app};

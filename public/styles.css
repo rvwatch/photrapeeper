@@ -52,7 +52,6 @@ header {
   height: 235px;
   display: inline-block;
   margin-bottom: 10px;
-  background-color: blanchedalmond;
 }
 
 .photo-frame img {
@@ -62,6 +61,18 @@ header {
 
 .delete-photo {
   position: absolute;
-  bottom: 0;
+  border-top:none;
+  border-right: none;
+  border-bottom-left-radius: 5px;
+  top: 0;
   right: 0;
+  cursor: pointer;
+}
+
+.delete-photo:hover {
+  background-color: red;
+  border-top:none;
+  border-right: none;
+  border: #fff;
+  color: #fff;
 }
