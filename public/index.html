@@ -14,12 +14,12 @@
       <h1 class="logo">PHOTRAPEEPER</h1>
       <form id="photrapeeper-form">
         <label>
-          <input id='title-input' placeholder="enter title" type="text" />
+          <input name='title' id='title-input' placeholder="enter title" type="text" />
         </label>
         <label>
-          <input id='url-input' placeholder="photo URL" type="text" />
+          <input name="url" id='url-input' placeholder="photo URL" type="text" />
         </label>
-        <button id='add-photo-btn' type="submit">Add to Album</button>
+        <button id='add-photo-btn' form="photrapeeper-form" value="Submit">Add to Album</button>
       </form>
     </header>
 
@@ -56,7 +56,7 @@
               <h2 class="photo-title">Testing Testing Testing</h2>
               <button class="delete-photo">x</button>
             </article>
-            
+
     </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="./scripts.js" async defer></script>
