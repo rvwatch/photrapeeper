@@ -34,7 +34,7 @@ const renderPhotoCards = (photoList) => {
         <button class="delete-photo" value="${id}">x</button>
       </article>`;
 
-      $(".album-wrap").after(cardHtml)
+      $(".album-wrap").append(cardHtml)
   })
 }
 
