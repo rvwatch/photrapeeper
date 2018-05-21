@@ -9,17 +9,17 @@ const bodyParser = require('body-parser');
 
 app.set('port', process.env.PORT || 3000);
 
-app.use(express.static('public'))
+app.use(express.static('public'));
 app.use(bodyParser.json());
 
 app.get('/api/v1/albums', (req, res) => {
   database('albums').select()
-  .then((albums) => {
-    res.status(200).json(albums);
-  })
-  .catch((error) => {
-    res.status(500).json({ error });
-  });
+    .then((albums) => {
+      res.status(200).json(albums);
+    })
+    .catch((error) => {
+      res.status(500).json({ error });
+    });
 });
 
 app.post('/api/v1/albums', (request, response) => {
@@ -29,12 +29,13 @@ app.post('/api/v1/albums', (request, response) => {
     if (!photo[requiredParameter]) {
       return response
         .status(422)
-        .send({ error: `Expected format: { title: <String>, url: <String> }. You're missing a "${requiredParameter}" property.` });
+        .send({ error: `Expected format: { title: <String>, url: <String> }. 
+        You're missing a "${requiredParameter}" property.` });
     }
   }
   database('albums').insert(photo, 'id')
     .then(photo => {
-      response.status(201).json({ id: photo[0] })
+      response.status(201).json({ id: photo[0] });
     })
     .catch(error => {
       response.status(500).json({ error });
@@ -45,7 +46,8 @@ app.delete('/api/v1/albums/:id', (request, response) => {
   database('albums').where('id', request.params.id).del()
     .then(deleteCount => {
       if (deleteCount === 0) {
-        return response.status(422).json({error: 'Sorry dude. No photo with that ID in here...'});
+        return response.status(422).json({error: 
+          'Sorry dude. No photo with that ID in here...'});
       }
       return response.sendStatus(204);
     })
@@ -56,7 +58,7 @@ app.delete('/api/v1/albums/:id', (request, response) => {
 
 
 app.listen(app.get('port'), () => {
-  console.log(`Photrapeeper is listening on ${app.get('port')}!!`);
+  console.log(`Photrapeeper is listening on ${app.get('port')}!!`) // eslint-disable-line
 });
 
 module.exports = {database, app};

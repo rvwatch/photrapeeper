@@ -8,15 +8,15 @@ chai.use(chaiHttp);
 describe('Client Routes', () => {
   it('should return static content', (done) => {
     return chai.request(app)
-    .get('/')
-    .then(response => {
-      response.should.have.status(200);
-      response.should.be.html;
-      done();
-    })
-    .catch(err => {
-      throw err;
-    });
+      .get('/')
+      .then(response => {
+        response.should.have.status(200);
+        response.should.be.html;
+        done();
+      })
+      .catch(err => {
+        throw err;
+      });
   });
 });
 

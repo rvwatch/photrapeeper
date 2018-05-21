@@ -6,7 +6,7 @@ exports.up = function (knex, Promise) {
       table.string('url');
       table.timestamps(true, true);
     })
-  ])
+  ]);
 };
 
 exports.down = function (knex, Promise) {
