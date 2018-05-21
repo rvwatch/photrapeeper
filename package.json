@@ -1,0 +1,29 @@
+{
+  "name": "photrapeeper",
+  "version": "1.0.0",
+  "description": "Final Eval for Mod 4!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rvwatch/photrapeeper.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rvwatch/photrapeeper/issues"
+  },
+  "homepage": "https://github.com/rvwatch/photrapeeper#readme",
+  "dependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
+    "express": "^4.16.3",
+    "mocha": "^5.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1"
+  }
+}
