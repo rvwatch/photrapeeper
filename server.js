@@ -41,6 +41,19 @@ app.post('/api/v1/albums', (request, response) => {
     });
 });
 
+app.delete('/api/v1/albums/:id', (request, response) => {
+  database('albums').where('id', request.params.id).del()
+    .then(deleteCount => {
+      if (deleteCount === 0) {
+        return response.status(422).json({error: 'Sorry dude. No photo with that ID in here...'});
+      }
+      return response.sendStatus(204);
+    })
+    .catch(err => {
+      return response.status(500).json({err});
+    });
+});
+
 
 app.listen(app.get('port'), () => {
   console.log(`Photrapeeper is listening on ${app.get('port')}!!`);
