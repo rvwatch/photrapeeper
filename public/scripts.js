@@ -23,9 +23,8 @@ const getPhotos = async () => {
     const response = await fetch('/api/v1/albums')
     const photos = await response.json();
     return photos;
-    
   } catch (err) {
-    console.log('theres nothing here...');
+    return 'theres nothing here...';
   }
 }
 
