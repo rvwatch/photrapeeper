@@ -1,4 +1,4 @@
-$( document ).ready( async function () {
+$( document ).ready( async function () { 
   const photoList = await getPhotos();
   renderPhotoCards(photoList);
   const photoForm = $('#photrapeeper-form')[0];

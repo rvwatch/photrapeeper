@@ -9,9 +9,9 @@ exports.seed = function(knex, Promise) {
           title: 'funny dogs',
           url: 'https://i.imgur.com/Nvd9VsM.jpg'
         }, 'id')
-        .then(() => console.log('Seeding complete!'))
-        .catch(error => console.log(`Error seeding data: ${error}`))
-      ]) // end return Promise.all
+          .then(() => console.log('Seeding complete!'))// eslint-disable-line
+          .catch(error => console.log(`Error seeding data: ${error}`))// eslint-disable-line
+      ]); // end return Promise.all
     })
-    .catch(error => console.log(`Error seeding data: ${error}`));
+    .catch(error => console.log(`Error seeding data: ${error}`));// eslint-disable-line
 };
