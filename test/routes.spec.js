@@ -27,6 +27,10 @@ describe('API tests', () => {
         response.should.have.status(200);
         response.should.be.json;
         response.body.should.be.an('array');
+        response.body[0].should.have.property('title');
+        response.body[0].should.have.property('url');
+        response.body[0].title.should.equal('funny dogs');
+        response.body[0].url.should.equal('https://i.imgur.com/Nvd9VsM.jpg');
         response.body.length.should.equal(1);
         done();
       });
@@ -46,7 +50,7 @@ describe('API tests', () => {
       });
   });
   
-  it('should THROW a 422', (done) => {
+  it('should THROW a 422 if no params are sent', (done) => {
     chai.request(app)
       .post('/api/v1/albums')
       .end((err, response) => {
@@ -69,7 +73,7 @@ describe('API tests', () => {
     chai.request(app)
       .delete('/api/v1/albums/987234')
       .end((error, response) => {
-        response.should.have.status(422);
+        response.should.have.status(404);
         done();
       });
   });

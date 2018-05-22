@@ -55,7 +55,6 @@ const addPhoto = async (title, url) => {
   } catch (err) {
     return 'That Did not work. Try adding another photo later...'
   };
-  location.reload();
 }
 
 const deletePhoto = async (id) => {
@@ -66,7 +65,6 @@ const deletePhoto = async (id) => {
   } catch (err) {
     return 'Delete Failed. Try removing something else.'
   };
-  location.reload();
 }
 
 

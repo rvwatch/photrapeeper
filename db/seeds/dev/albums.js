@@ -2,7 +2,6 @@ exports.seed = function(knex, Promise) {
   return knex('albums').del()
     .then(() => {
       return Promise.all([
-        
         knex('albums').insert({
           title: 'funny dogs',
           url: 'https://i.imgur.com/Nvd9VsM.jpg'
