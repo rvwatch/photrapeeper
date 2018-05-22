@@ -46,6 +46,8 @@ describe('API tests', () => {
       .end((err, response) => {
         response.should.have.status(201);
         response.body.should.be.an('object');
+        response.body.should.have.property('id');
+        response.body.id.should.equal(2);
         done();
       });
   });
@@ -56,6 +58,8 @@ describe('API tests', () => {
       .end((err, response) => {
         response.should.have.status(422);
         response.body.should.be.an('object');
+        response.body.should.have.property('error');
+        response.body.error.should.equal('Expected format: { title: <String>, url: <String> }. \n        You\'re missing a "title" property.');
         done();
       });
   });
@@ -74,15 +78,7 @@ describe('API tests', () => {
       .delete('/api/v1/albums/987234')
       .end((error, response) => {
         response.should.have.status(404);
-        done();
-      });
-  });
-
-  it('should not DELETE a photo if no ID is included', (done) => {
-    chai.request(app)
-      .delete('/api/v1/albums/theCat')
-      .end((error, response) => {
-        response.should.have.status(500);
+        response.text.should.equal('"Sorry dude. No photo with that ID in here..."');
         done();
       });
   });

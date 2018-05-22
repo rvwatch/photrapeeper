@@ -46,8 +46,7 @@ app.delete('/api/v1/albums/:id', (request, response) => {
   database('albums').where('id', request.params.id).del()
     .then(deleteCount => {
       if (deleteCount === 0) {
-        return response.status(404).json({error: 
-          'Sorry dude. No photo with that ID in here...'});
+        return response.status(404).json("Sorry dude. No photo with that ID in here...");
       }
       return response.sendStatus(204);
     })
