@@ -4,7 +4,7 @@ exports.seed = function(knex, Promise) {
     .then(() => {
       return Promise.all([
         
-        // Insert a single project, return the project ID, insert 2 meals
+        // Insert a single photo, return the photo ID, insert a photo
         knex('albums').insert({
           title: 'funny dogs',
           url: 'https://i.imgur.com/Nvd9VsM.jpg'
