@@ -1,21 +1,20 @@
-$( document ).ready( async function () { 
+$(document).ready(async function () {
   const photoList = await getPhotos();
   renderPhotoCards(photoList);
-  const photoForm = $('#photrapeeper-form')[0];
-  const deleteButtons = $('.delete-photo'); 
+});
 
-  $(photoForm).on('submit', (event) => {
-    event.preventDefault();
-    const title = $('#title-input').val();
-    const url = $('#url-input').val();
-    addPhoto(title, url);
-    $(photoForm)[0].reset();
-  })
-  
-  $('.delete-photo').on('click', (event) => {
-    const id = event.target.value;
-    deletePhoto(id);
-  });
+const formSubmit = $('#photrapeeper-form')[0];
+$(formSubmit).on('submit', (event) => {
+  event.preventDefault();
+  const title = $('#title-input').val();
+  const url = $('#url-input').val();
+  addPhoto(title, url);
+  $(formSubmit)[0].reset();
+})
+
+$(document).on('click', '.delete-photo', function (event) {
+  const id = event.target.value;
+  deletePhoto(id);
 });
 
 const getPhotos = async () => {
@@ -30,7 +29,11 @@ const getPhotos = async () => {
 
 const renderPhotoCards = (photoList) => {
   photoList.forEach(photo => {
-    const {title, url, id} = photo
+    const {
+      title,
+      url,
+      id
+    } = photo
     const cardHtml = `
       <article class="photo-card" id=${id}>
         <div class="photo-frame">
@@ -39,7 +42,7 @@ const renderPhotoCards = (photoList) => {
         <h2 class="photo-title">${title}</h2>
         <button class="delete-photo" value="${id}">x</button>
       </article>`;
-      $(".album-wrap").append(cardHtml)
+    $(".album-wrap").append(cardHtml)
   })
 }
 
@@ -50,8 +53,17 @@ const addPhoto = async (title, url) => {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ title, url })
+      body: JSON.stringify({
+        title,
+        url
+      })
     })
+    const id = await response.json();
+    renderPhotoCards([{
+      title,
+      url,
+      ...id
+    }])
   } catch (err) {
     return 'That Did not work. Try adding another photo later...'
   };
@@ -62,15 +74,10 @@ const deletePhoto = async (id) => {
     const response = await fetch(`/api/v1/albums/${id}`, {
       method: 'DELETE'
     })
+    if (response.status === 204) {
+      $(`#${id}`).remove();
+    }
   } catch (err) {
     return 'Delete Failed. Try removing something else.'
   };
 }
-
-
-
-
-
-
-
-
